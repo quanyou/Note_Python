@@ -1,0 +1,100 @@
+在操作对于一些文件的打开、数据库连接、socket等等，应用程序打开这些资源并执行完成业务逻辑之后，必须做的一件事就是要关闭（断开）该资源，否则资源将会被占用。
+
+如何关闭一个文件。
+def m3(object):
+
+    with open("try.txt", "r") as f:
+
+        content = f.read()
+
+y一种更简洁，优雅的方式就是使用with关键字。open方法的返回值赋值给变量f，当离开with代码块的时候，系统会自动调用f.cloas()方法，with的作用和使用try/finally 语句一样的。
+
+上下文管理器（Context Mananger）：
+
+    任何实现了__enter__ and __exit__() 方法的对象都可称之为上下文管理器，上下文管理器对象可以使用with关键字。文件对象也实现了上下文管理器。
+
+    文件对象实现该两个方法：
+
+    class open_file(object):
+
+        def __init__(self, filename, mode):
+            self.filename = filename
+            self.mode = mode
+
+
+        def __enter__(self):
+            print("enter")
+            self.f = open(self.filename, self.mode)
+            return self.f
+
+
+        def __exit__(self, exc_type, exc_val,exc_tb):
+            print("will exit")
+            self.f.close()
+
+
+
+    with open_file("try.txt", "r") as f :
+        with_body
+
+
+
+    两个方法的：
+
+    __enter__: 方法进入运行时上下文环境，并返回自身或另一个与运行时上下文相关的对象。返回值会赋给as从句后面的变量，as从句是可选的。
+    __exit__:  方法退出当前运行时上下文并返回一个布尔值，该布尔值表明了“如果with_suit”的退出是由异常引发的，该异常是否需要被忽略”。如果_exit__()的返回值等于False，那么这个异常将被重新引发一次；如果
+               __exit__()的返回值等于True，那么这个异常就被无视，继续执行后面的代码；
+
+
+with语句的实际执行流程是这样的：
+    1.执行context_exp以获取上下文管理器
+    2.加载上下文管理器的__exit__()方法以备稍后调用
+    3.调用上下文管理器的__enter__()方法
+    4.如果有as var从句，则将__enter__()方法的返回值赋给var
+    5.执行子代码块 with_suit
+    6.调用上下文管理器的__exit__()方法，如果with_suit的退出是有异常引发的，那么该异常的type、value和traceback会作为参数传给__exit__(),否则传三个None。
+    7.如果with_suit 的退出由异常引发，并且__exit__()的返回值等于False，那么这个异常将被重新引发一次；如果__exit__()的返回值等于True，那么这个异常就被无视掉，继续执行后面的代码
+
+
+
+
+
+更优雅的上下文管理（contextlib模块）
+contextlib模块提供了更易用的上下文管理器。
+
+contextlib.closing
+contextlib.closing方法在语句块结束后调用对象的close方法
+
+from contextlib import closing
+import urllib
+with closing(urllib.urlopen('http://www.python.org')) as page:
+    for line in page:
+        print line
+
+ contextlib.nested
+ contextlib.nested 方法用于替换嵌套的with语句。例如，有两个文件，一个读一个写，即进行拷贝。
+
+ with contextlib.nested(open('fileToRead.txt', 'r'), open('fileToWrite.txt', 'w')) as (reader, writer):
+
+        writer.writer(reader.read())
+
+contextlib.contextmanager
+contextlib.contextmanager 是一个装饰器，可以用来装饰被yield语句分割成两部分的函数，以此进行上下文管理。任何在yield之前的内容都可以看做在代码块执行前的操作，而任何yield之后的操作都可以看作是代码块结束后要做的操作。如果希望在上下文管理器中使用as关键字，那么就用yield返回需要的值，将通过as关键字赋值给新的变量。
+
+
+from contextlib import contextmanager
+
+@contextmanager
+def tag(name):
+    print "<%s>" % name
+    print "</%s>" % name
+
+
+使用contextlib。contextmanager 时，可套用如下框架：
+from contextlib import contextmanager
+@contextmanager
+def closing(thing):
+    try:
+        yield thing
+    finally:
+        thing.close()

@@ -1,0 +1,73 @@
+1. 字符串切片
+
+def strReverse(strDemo):
+    return strDemo[::-1]
+print(strReverse('pythontab.com'))
+
+结果：moc.batnohtyp
+
+
+
+2. 遍历构造列表法
+
+循环遍历字符串，构造列表，从后往前添加元素，最后把列表变成字符串
+
+def strReverse(strDemo):
+    strList = []
+    for i in range(len(strDemo)-1, -1, -1):
+        strList.append(strDemo[i])
+    return ''join(strList)
+
+print(strReverse('pythontab.com')
+
+
+
+3. 使用reverse函数
+
+将字符串转换为列表使用reverse函数
+
+def strReverse(strDemo):
+    strList = list(strDemo)
+    strList.reverse()
+    return ''.join(strList)
+print(strReverse('pythontab.com'))
+
+
+4. collections模块方法extendleft
+
+import collections
+def strReverse(strDemo):
+    deque1 = collections.deque(strDemo)
+    deque2 = collections.deque()
+
+    for tmpChar in deque1:
+        deque2.extendleft(tmpChar)
+    return ''.join(deque2)
+print(strReverse('pythontab.com'))
+
+
+
+5. 递归实现
+
+def strReverse(strDemo):
+    if len(strDemo) <= 1:
+        return strDemo
+     return strDemo[-1] + strReverse(strDemo[:-1])
+print(strReverse('pythontab.com')
+
+
+
+6. 借助基本的Swap操作，以中间为基准交换对称位置的字符
+
+def strReverse(strDemo):
+    strList = list(strDemo)
+    if len(strList) == 0 or len(strList) == 1:
+        return strList
+
+    i = 0
+    length = len(strList)
+    while i < length/2:
+        strList[i], strList[length-i-1] = strList[length-i-1], strList[i]
+        i += 1
+     return ''.join(strList)
+print(strReverse('pythontab.com'))

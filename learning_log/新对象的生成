@@ -1,0 +1,16 @@
+class Point:
+    def __init__(self, x, y):
+    self.x = x
+    self.y = y
+
+point1 = Point(1, 2)
+point2 = eval("{}({}, {})").format("Point", 1, 2)
+point3 = globals()["Point"](1, 2)
+point4 = locals()["Point"](1, 2)
+point5 = getattr(sys.modules[__name__], "Point")(1, 2)
+point6 = copy.deepcopy(point1)
+point7 = point1.__class__(1, 2)
+point8 = type("Point", (Point, ), {})(1, 2)
+point9 = types.new_class('Point', (Point, ), {})(1, 2)
+
+需要导入sys和types模块

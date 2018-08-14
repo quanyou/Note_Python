@@ -1,0 +1,59 @@
+1. (+) 操作符拼接
+
+s = 'Hello' + ' ' + 'World' + '!'
+
+操作效率低下，使用+拼接字符串会生成一个新字符串，新的字符串需要重新申请内存。
+
+2. str.join()方法拼接
+
+strlist = ['Hello', ' ', 'World', '!']
+
+print(''.join(strlist))
+
+场景：集合转化为字符串，''.join()其中的''可以是空字符，可以是任意其他字符，任意其他字符时，集合中字符串会被该字符隔开。
+
+
+3. str.format()方法拼接
+
+s = '{} {}'.format('Hello', 'World')
+
+注意：字符串中{}的数量要和format方法参数数量一致。
+
+4. （%）操作符拼接
+
+s = '%s %s!'%('Hello', 'World')
+
+5. ()多行拼接
+
+s = (
+    'Hello'
+    ' '
+    'World'
+    '!'
+)
+python 遇到未闭合的小括号，自动将多行拼接为一行。
+
+6. string 模块中的Template对象拼接
+
+from String import Template
+
+s = Template('${s1} ${s2}!')
+
+print(s.safe_substitute(s1='Hello', s2='World'))
+
+Template 实现方式是首先通过Template初始化一个字符串。这个字符串中包含一个个key。通过调用substitute或safe_subsititute，将key值与方法中传递过来的参数对应上，从而实现在指定的位置导入字符串。
+
+7. F-strings拼接
+提供一种明确且方便的方式将python表达式嵌入到字符串中来进行格式化：
+
+s1 = 'Hello'
+s2 = 'World'
+print(f'{s1} {s2}!')
+
+def power(x):
+    retrun x*x
+
+x=4
+print(f'{x} * {x} = {power(x)}')
+
+F-strings 的运行速度很快，比%-string和str.format()都快的多

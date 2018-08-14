@@ -1,0 +1,79 @@
+1. read三种不同的方式
+
+f = open('hello.txt') # 'hello.txt' 是文件的名称
+while True:
+    text = f.readline()     #读取文件指针指向的哪一行内容，然后指针下移
+    if text:
+        print(text)
+    else:   # 当文读到最后一行，三个空字符串
+        print(len(text))
+        break
+
+f.close()
+
+
+f = open('hello.txt')
+line_list = f.readlines()
+print(type(line_list)
+for line in line_list:
+    print(line)
+f.close()
+
+
+
+f = open("hello.txt")
+s = f.read()
+print(type(s))
+for line in s:
+    print(line, end=' ')
+f.close()
+
+
+
+2. writer 的两种常用基本方式
+f = open('poet.txt', 'w', encoding='utf-8') # 以写模式打开文件
+f.write('你好，python')
+print("写入完毕，运行！")
+f.close()
+
+f = open("poet.txt", 'a+')
+print(f.read())
+fruits = ['apple\n', 'banana\n', 'orange\n', 'watermelon\n']
+f.writelines(fruits)
+print('写入成功')
+f.close()
+
+
+
+3. delete删除
+import os, os.path
+if os.path.exists("sd.txt"):
+    os.remove("sd.txt")
+    print("删除成功")
+else:
+    print("文件不存在")
+
+
+删除相同文件的相同文件格式
+import os
+files = os.listdir('.')     #列出指定目录下的所有文件和目录
+for filename in files:
+    point_index = filename.find(".") # 获取‘.’在文件中出现的索引位置
+    if filename[point_index + 1:] == "txt": #判断当前文件的扩展名是否为‘txt’
+        os.remove(filename)
+
+
+4. copy复制
+
+srcFile == open("a.txt")
+destFile = open("a_copy.txt", 'w')
+destFile.write(srcFile.read())
+destFile.close()
+srcFile.close()
+
+
+with open("a.txt") as src, open("a_copy.txt", 'w') as dest:
+    dest.write(src.read())
+print('复制成功拉')
+
+
