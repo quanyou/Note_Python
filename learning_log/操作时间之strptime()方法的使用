@@ -1,0 +1,15 @@
+strptime() 方法分析表示根据格式的时间字符串。返回值是一个struct_time所返回gmtime()或localtime().
+格式参数使用相同的指令使用strftime(); 默认为“%a %b %d %H :%M :%S %Y”相匹配的ctime()所返回的格式。
+如果字符串不能按格式进行解析，或者如果它具有解析后多余的数据，ValueError被挂起。
+
+strptime()方法的语法
+
+time.strptime(string[, format])
+
+参数：
+    string -- 将根据给定的格式解析字符串格式的时间
+    format -- 将用于解析该给定的字符串的指令
+
+返回值：
+    struct_time 返回gmtime() 或者 localtime()的值。
+

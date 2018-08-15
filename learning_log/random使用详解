@@ -1,0 +1,75 @@
+生成随机数的模块random，需要import
+
+random.random:
+
+random.random() 生成一个0到1的随机浮点数： 0 <= n < 1.0
+
+random.uniform:
+
+random.uniform的函数原型为：random.uniform(a, b)用于生成一个指定范围内的随机符点数，两个参数其中一个是上限，一个是下限。如果a > b,则生成的
+随机数n: b <= n <= a.如果a < b,则a <= n <= b.
+
+
+random.randint:
+
+random.randint()的函数原型为：random.randint(a, b),用于生成一个指定范围内的整数。其中参数a是下限，参数b是上限，生成的随机数n：a <= n <= b.
+
+
+random.randrange:
+
+random.randrange函数原型：random.randrange([start], stop[, step]), 从指定范围内，按指定基数递增的集合中获取一个随机数。
+
+
+random.choice:
+
+random.choice 从序列中获取一个随机元素。函数原型：random.choice(sequence). 参数sequence表示一个有序类型。sequence在python中不是一种特定类型，泛指一系列类型。
+list,tuple,字符串都是sequence。
+
+
+random.shuffle:
+
+random.shuffle 函数原型：random.shuffle(x[, random]), 用于将一个列表中的元素打乱。
+
+
+random.sample:
+
+random.sample 函数原型：random.sample(sequence, k), 从指定序列中随机获取指定长度的片段。sample函数不会修改原有序列。
+
+import random
+list = [1, 2, 3, 4, 5, 6, 7, 8]
+slice = random.sample(list, 5)  # 从list中随机获取5个元素，作为一个片段返回, 不修改原有序列
+
+
+
+Python 实现批量将ppt转换为pdf
+
+使用说明：1、脚本和PPT文件放置在同一文件夹下；2、运行脚本
+
+import comtypes.client
+import os
+
+def init_powerpoint():
+    powerpoint = comtypes.client.CreateObject("Powerpoint.Application")
+    powerpoint.Visible = 1
+    return powerpoint
+
+def ppt_to_pdf(powerpoint, inputFileName, outputFileName, formatType = 32):
+    if outputFileName[-3 :] != 'pdf':
+        outputFileName = outputFileName + '.pdf'
+    deck = powerpoint.Presentations.Open(inputFileName)
+    deck.SaveAs(outputFileName, formatType)
+    deck.Close()
+
+def convert_files_in_folder(powerpoint, folder):
+    files = os.listdir(folder)
+    pptfiles = [f for f in files if f.endswith((".ppt", ".pptx"))]
+    for pptfile in pptfiles:
+        fullpath = os.path.join(folder, pptfile)
+        ppt_to_pdf(powerpoint, fullpath, fullpath)
+
+if __name__ == "__main__":
+    powerpoint = init_powerpoint()
+    cwd = os.getcwd()
+    convert_files_in_folder(powerpoint, cwd)
+    powerpoint.Quit()
+
