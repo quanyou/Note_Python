@@ -30,6 +30,7 @@ f.close()
 
 
 
+
 2. writer 的两种常用基本方式
 f = open('poet.txt', 'w', encoding='utf-8') # 以写模式打开文件
 f.write('你好，python')
@@ -75,5 +76,100 @@ srcFile.close()
 with open("a.txt") as src, open("a_copy.txt", 'w') as dest:
     dest.write(src.read())
 print('复制成功拉')
+
+
+
+
+5. open 方法原型解释
+
+open(file_name[, access_mode][], buffering])
+
+1) 参数说明
+
+file_name : 包含要访问的文件路径以及文件名称的字符串值。尽量使用绝对路径
+access_mode : 打开文件方式，非强制，默认只读（r）
+    r: 只读
+    w: 写之前清空文件的内容
+    a: 追加的方法
+buffering: 先写到缓存中
+
+如果buffering的值被设置为0，不缓存；值为1，访问文件时会缓存行；>1,表示寄存去缓存大小；< 0 ，寄存区的缓冲大小则为系统默认。非强制性。
+
+2) 返回值
+
+返回的File_object是一个指向文件的指针（一个文件对象）文件句柄。只读模式打开不存在的文件报IOError异常；
+以写或追加模式（w/a/a+）打开不存在是，默认创建，如果所在路径中有目录不存在，报IOError异常
+
+
+6. 通过open获取到的文件句柄可以对文件做其他操作
+
+1) fp.closed
+    判断文件是否已经关闭。返回true文件已经关闭，否则返回false
+
+2) fp.mode
+    输出读写模式。返回被打开文件的访问模式。
+
+3) fp.name
+    返回文件名称。
+
+4) fp.softspace
+    用print输出后，是否跟一个空格符，false不打印，true打印。
+
+5) fp.close()
+    刷新缓冲区里任何还没写入的信息，并关闭文件。
+
+6) flush()
+    把缓冲区中的内容持久化写到磁盘里，缓存区写满的情况，系统会自动调用flush()方法。
+    调用flush时机：写入多少长度数据，或者间隔了多长时间；没有flush()，持久化内容丢失。
+
+7) next()
+    把一个file用for...in file 这样的循环遍历语句时，就是调用next()函数来实现。
+
+
+
+
+
+
+Requests模块
+
+发送请求
+import requests  # 导入requests模块
+result = requests.get('http://www.pythontab.com')  # 生成Response对象
+result.status_code  # 返回码
+
+result.headers['content_type']  # 返回头部信息
+result.encoding  # 编码信息
+result.content  # 内容部分
+
+
+URL传递参数
+data = {'version' : 'python3', 'keywords' : 'pythontab'}
+result = requests.get("http://www.pythontab.com", params=data)
+print(result.status_code)
+
+原始响应内容
+在想获取来自服务器的原始套接字响应，可以访问r.raw. 需在初始请求中设置stream=True。
+result = requests.get('http://www.pythontab.com', stream=True)
+
+定制请求头
+import requests
+url = 'http://www.pythontab.com'
+data = {'version' : 'python3', 'keywords' : 'pythontab'}
+headers = {'content-type' : 'application/json'}
+result = requests.post(url, data=json.dumps(data), headers=headers)
+
+错误与异常
+遇到网络问题（如：DNS查询失败、拒绝连接等）时，Requests会抛出一个ConnectionError异常。
+遇到罕见的无效HTTP响应时，Requests则会抛出一个HTTPError异常。
+若请求超时，则抛出一个Timeout异常。
+若请求超过了设定的的最大重定向次数，则会抛出一个TooManyRedirects异常。
+所有Requests显示抛出的异常都是继承自requests.exceptions.RequestException.
+
+常用方法：
+result.content  # 获取二进制响应内容
+result.json()   # JSON响应内容
+result.headers  # 响应头内容
+result.cookies  # cookie内容
+result.history  # 请求历史
 
 

@@ -1,0 +1,34 @@
+定义
+差集： A，B 是两个集合，所有属于A且不属于B的元素构成的集合，就是差集。
+交集： A，B 是两个集合，即属于A又属于B的元素构成的集合，就是交集。
+并集： A，B 是两个集合，把他们所有的元素合并在一起组成的集合，就是并集。
+
+求两个list的差集
+listA = [1, 2, 3, 4]
+listB = [2, 3, 4]
+
+1. 循环遍历法：
+
+  les = []
+  for i in listA:
+    if i not in listB:
+        ret.append(i)
+
+
+2. 运算符法
+    ret = list(set(listA) ^ set(listB))
+
+
+3. difference函数法
+    list(set(listA).difference(set(listB)))
+
+
+求两个list的并集
+
+ret = list(set(listA).union(set(listB)))
+
+求两个list的交集
+
+ret = list(set(listA).intersection(set(listB)))
+
+总结： 可通过将list转成set，使用set各种方法处理。

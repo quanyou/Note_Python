@@ -1,0 +1,94 @@
+1. readline函数
+with open("/pythontab/code.txt") as f:
+    line = f.readline()
+    while line:
+        print(line, end = '')
+        line = f.readline()
+
+
+特点： 节省内存，不需要一次性把文件放入内存中；速度相对较慢
+
+
+
+2. 一次读取多行数据
+with open('/pythontab/code.txt') as f:
+    while 1:
+        lines = f.readlines(10000)
+        if not lines:
+            break
+        for line in lines:
+            print(line)
+
+特点： 一次性读取多行，提升读取速度，内存使用稍大，根据情况调整一次读取的行数
+
+
+
+3. 直接for循环
+直接对一个file对象使用for循环读每行数据
+for line in open("/pythontab/code/txt"):
+    print(line)
+
+
+
+4. 使用fileinput模块
+import fileinput
+for line in fileinput.input("/pythontab/code.txt"):
+    print(line)
+
+
+
+
+
+
+
+
+
+
+检查文件或文件夹是否存在
+
+
+使用os库
+不需要打开文件，直接使用os库方法检查
+import os.path
+filename = '/pythontab.com/file.txt'
+os.path.isfile(filename)
+检查文件是否存在，成功返回True，失败返回False
+仅检查文件，非文件夹
+
+
+文件夹检查
+os.path.exists即可检查文件也可检查文件夹
+import os
+a_path = '/puthontab.com/'
+if os.path.exists(a_path):
+    # do something
+
+
+文件权限检查
+上面仅检查了文件是否存在，并没有检查是否可读或可写，使用os.access方法
+import os
+filename = '/pythontab.com/file.txt'
+if os.path.isfile(filename) and os.access(filename, os.R_OK):
+    # do something
+
+既检查了文件是否存在，又检查了文件是否可读
+
+
+使用pathlib库
+
+文件是否存在
+from pathlib import Path
+my_file = Path("/pythontab.com/file.txt")
+if my_file.is_file():
+    # file exists
+
+
+文件夹是否存在
+if my_file.is_dir():
+    # directory exists
+
+文件夹或文件是否存在
+if my_file.exists():
+    # path exists
+
+

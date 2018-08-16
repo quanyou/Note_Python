@@ -1,0 +1,388 @@
+import numpy as np
+
+
+# double = lambda x: x * 2
+# print(double(5))
+
+# Map
+# seq = [1, 2, 3, 4, 5]
+# result = list(map(lambda var: var * 2, seq))
+# print(result)
+
+# Filter
+# seq = [1, 2, 3, 4, 5]
+# result = list(filter(lambda var: var > 2, seq))
+# print(result)
+
+
+# Arange && Linspace
+# print(np.arange(3, 7, 2))
+# print(np.linspace(2.0, 3.0, num=6))
+
+
+# def test_args_kwargs(arg1, arg2, arg3):
+#     print(arg1)
+#     print(arg2)
+#     print(arg3)
+#
+# args = ("two", 3, 5)
+# test_args_kwargs(*args)
+#
+#
+# kwargs = {"arg3" : 3, "arg2" : 2, "arg1" : 1}
+# test_args_kwargs(**kwargs)
+#
+# def generator_function():
+#     for i in range(10):
+#         yield i
+#
+# print(generator_function())
+#
+# for item in generator_function(): # 在generator_function 遍历时，每次调用该方法，进入之后通过i进行判断然后执行，yield保证了每次执行一次
+#     print(item)
+
+
+
+# def fibon(n):
+#     a = b = 1
+#     for i in range(n):
+#         yield a
+#         a, b = b, a + b
+
+# for x in fibon(10):
+#     print(x)
+
+
+# def generator_function():
+#     for i in range(3):
+#         yield i
+#
+# gen = generator_function()
+# print(next(generator_function()))
+#
+# my_string = "Yasoob"
+# my_iter = iter(my_string)
+# # next(my_iter)
+# print(next(my_iter))
+#
+# for string in my_iter:
+#     print(string)
+
+
+# items = [1, 2, 3, 4, 5]
+#
+# squard = list(map(lambda var: var ** 2,items))
+# print(squard)
+
+#
+# def multiply(x):
+#     return (x*x)
+#
+# def add(x):
+#     return (x+x)
+#
+# funcs = [multiply, add]
+#
+# for i in range(5):
+#     value = map(lambda var: var(i), funcs)
+
+
+# def a_new_decorator(a_func):
+#     def wrapTheFunction():
+#         print("I am doing some boring work before executing a_func()")
+#
+#         a_func()
+#
+#         print("I am doing some boring work after executing a_func()")
+#
+#     return wrapTheFunction
+#
+# def a_function_requiring_decoration():
+#
+#     print("I am the function which needs some decoration to remove my foul smell")
+#
+# a_function_requiring_decoration()
+#
+# a_function_requiring_decoration = a_new_decorator(a_function_requiring_decoration)
+#
+# a_function_requiring_decoration()
+
+from functools import wraps
+#
+# def a_new_decorator(a_func):
+#     @wraps(a_func)
+#
+#     def wrapTheFunction():
+#         print("I am doing some boring work before executing a_func()")
+#         a_func()
+#         print("I am doing some boring work after executing a_func()")
+#     return wrapTheFunction
+#
+# @a_new_decorator
+# def a_function_requiring_decoration():
+#     """Hey yo! Decorate me!"""
+#     print("I am the function which needs some decoration to remove my foul smell")
+#
+# print(a_function_requiring_decoration.__name__)
+
+
+
+
+# def decorate_name(f):
+#     @wraps(f)
+#
+#     def decorated(*args, **kwargs):
+#         if not can_run:
+#             return "Function will not run"
+#         return f(*args, **kwargs)
+#     return decorated
+#
+# @decorate_name
+# def func():
+#     return ("Function is running")
+#
+# can_run = True
+# print(func())
+#
+# can_run = False
+# print(func())
+#
+#
+# def logit(func):
+#     @wraps(func)
+#     def with_logging(*args, **kwargs):
+#         print(func.__name__ + "was called")
+#         return func(*args, **kwargs)
+#     return with_logging
+#
+# @logit
+# def addition_func(x):
+#     """Do some math."""
+#     return x + x;
+#
+# result = addition_func(4)
+# print(result)
+
+
+
+
+# def logit(logfile='out.log'):
+#     def logging_decorator(func):
+#         @wraps(func)
+#         def wrapped_function(*args, **kwargs):
+#             log_string = func.__name__ + "was called"
+#             print(log_string)
+#             # 打开logfile，并写入内容
+#             with open(logfile, 'a') as opened_file:
+#                 # 现在将日志打到指定的logfile
+#                 opened_file.write(log_string + '\n')
+#             return func(*args, **kwargs)
+#         return wrapped_function
+#     return logging_decorator
+#
+# @logit()
+# def myfunc1():
+#     pass
+#
+# myfunc1()
+#
+#
+# @logit(logfile='func2.log')
+# def myfunc2():
+#     pass
+#
+# myfunc2
+
+
+# def logit(logfile='out.log'):
+#     def logging_decorator(func):
+#         @wraps(func)
+#         def wrapped_function(*args, **kwargs):
+#             log_string = func.__name__ + "was called"
+#             print(log_string)
+#
+#             with open(logfile, 'a') as opened_file:
+#                 opened_file.write(log_string + '\n')
+#             return func(*args, **kwargs)
+#         return wrapped_function
+#     return logging_decorator
+#
+# @logit
+# def myfunc1():
+#     pass
+#
+# myfunc1()
+
+# class logit(object):
+#     def __init__(self, logfile='out.log'):
+#         self.logfile = logfile
+#
+#     def __call__(self, func):
+#         @wraps(func)
+#         def wrapped_function(*args, **kwargs):
+#             log_string = func.__name__ + "was called"
+#             print(log_string)
+#
+#             with open(self.logfile, 'a') as opened_file:
+#                 opened_file.write(log_string + '\n')
+#
+#             self.notify()
+#             return func(*args, **kwargs)
+#         return wrapped_function
+#     def notify(self):
+#         pass
+
+
+
+# from collections import defaultdict
+#
+# colours = (
+#     ('Yasoob', 'Yellow'),
+#     ('Ali', 'Blue'),
+#     ('Arham', 'Green'),
+#     ('Yasoob', 'Red'),
+#     ('Ahmed', 'Silver'),
+# )
+#
+# favourite_colours = defaultdict(list)
+
+# for name, colour in colours:
+#     favourite_colours[name].append(colour)
+#
+# print(favourite_colours)
+
+import collections
+from collections import deque
+from collections import namedtuple
+import json
+
+tree = lambda : collections.defaultdict(tree)
+print(tree.__annotations__)
+some_dict = tree()
+some_dict['colours']['favourite'] = "yellow"
+print(json.dumps(some_dict))
+
+
+d = deque()
+d.append('1')
+d.append('2')
+d.append('3')
+
+print(len(d))
+
+
+
+Animal = namedtuple('Animal', 'name,age,type,sex')
+perry = Animal(name='perry', age=31, type="cat", sex="男")
+print(perry)
+
+
+my_list = ['apple', 'banana', 'grapes', 'pear']
+for c, value in enumerate(my_list, 0):
+    print(c, value)
+
+
+my_list = ['apple', 'banana', 'grapes', 'pear']
+counter_list = list(enumerate(my_list, 0))
+print(counter_list)
+
+
+mcase = {'a': 10, 'b': 34, 'A': 7, 'Z': 3}
+mcase_frequency = {
+
+    k.lower(): mcase.get(k.lower(), 0) + mcase.get(k.upper(), 0)
+    for k in mcase.keys()
+}
+
+print(mcase_frequency)
+
+from pprint import pprint
+import itertools
+my_list = {'name': 'Yasoob', 'age': 'undefined', 'personality': 'awesome'}
+pprint(my_list)
+
+a_list = [[1, 2], [3, 4], [5, 6]]
+print(list(itertools.chain.from_iterable(a_list)))
+
+print(list(itertools.chain(*a_list)))
+
+from ctypes import *
+
+adder = CDLL('./adder.so')
+res_int = adder.add_int(4,5)
+print("Sum of 4 and 5 =" + str(res_int))
+
+# a = c_float(5.5)
+# b = c_float(4.1)
+#
+# add_float = adder.add_float
+# add_float.restype = c_float
+# print("Sum of 5.5 and 4.1 = ", str(add_float(a, b)))
+
+import io
+with open('photo.jpg', 'rb') as inf:
+    jpgdata = inf.read()
+
+if jpgdata.startswith(b'\xff\xd8'):
+    text = u'This is a JPEG file (%d bytes long)\n'
+else:
+    text = u'This is a random file (%d bytes long)\n'
+
+with io.open('summary.txt', 'w', encoding='utf-8') as outf:
+    outf.write(text % len(jpgdata))
+
+
+from functools import lru_cache
+
+@lru_cache(maxsize=32)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+print([fib(n) for n in range(10)])
+fib.cache_clear()
+
+
+from functools import wraps
+
+def memoize(function):
+    memo = {}
+    @wraps(function)
+    def wrapper(*args):
+        if args in memo:
+            return memo[args]
+        else:
+            rv = function(*args)
+            memo[args] = rv
+            return rv
+    return wrapper
+
+@memoize
+def fibonacci(n):
+    if n < 2: return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+fibonacci(25)
+
+
+
+
+
+
+class File(object):
+    def __init__(self, file_name, method):
+        self.file_name = file_name
+        self.method = method
+
+        self.file_obj = open(file_name, method)
+
+        def __enter__(self):
+            return self.file_obj
+
+        def __exit__(self, type, value, traceback):
+            self.file_obj.close()
+
+
+with File('demo.txt', 'w') as opened_file:
+    opened_file.write('Hola!')
