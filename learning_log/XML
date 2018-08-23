@@ -1,0 +1,10 @@
+最常用的XML应用为“聚合订阅（syndication feeds）” 用来展示博客，论坛或者其他会。通过‘订阅（subscribe）’feed来关注他们，可以使用“feed聚合工具（feed aggregator）”
+
+XML 是一种描述层次结构化数据的通用方法。XML文档包含起始和结束标签（tag）分隔一个或多个元素（element）
+
+解析XML： DOM 和 SAX 解析器。 可使用ElementTree库解析
+
+
+Element 属于Python标准库中的一部分，位置为xml.etree.ElementTree.
+parse() 函数是ElementTree库的主要入口，使用文件名或流对象作为参数。parse() 函数会立即解析完整文档。内存资源紧张时，可以增量式地解析XML文档。
+parse() 返回一个能代表整篇文档的对象。获取根元素的引用可以调用getroot()方法。

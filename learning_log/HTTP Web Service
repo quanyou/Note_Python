@@ -1,0 +1,23 @@
+
+HTTP Web 服务是指以编程的方式直接使用HTTP操作从远程服务器发送和接收数据。获取服务器数据，使用HTTP GET；向服务器发送新数据，使用HTTP POST。
+可以使用HTTP PUT 和 HTTP DELETE 创建、修改和删除数据。
+
+Python 3带有两个库用于和HTTP Web服务交互：
+
+http.client 是实现了RFC 2616，HTTP 协议的底层库。
+
+urllib.request 建立在http.client 上的抽象层。为访问HTTP 和 FTP 服务器提供了一个标准的API，自动跟随HTTP重定向，处理一些常见形式的HTTP认证。
+
+
+HTTP 特性
+
+缓存：（缓存代理服务器） 能够起到的作用是因为缓存是内建在HTTP协议中的。
+
+最后修改时间的检查 ： 有一些数据从不改变，而另外一些则总是在变化。介于两者之间，在很多情况下数据还没变化但是将来可能会变化。
+
+ETAGS ：和最后修改时间检查达到相同目的。使用ETag时，服务器在返回数据的同时在ETag头里返回一个哈希码（如何生成哈希码完全取决于服务器，唯一的要求是数据改变时哈希码也变）
+        diveintomark.org 引用的背景图片包含有ETag头。
+
+httplib2如何处理Last-Modified和ETag头
+
+Cache-Control和Expires缓存头被称为新鲜度指标（freshness indicators）

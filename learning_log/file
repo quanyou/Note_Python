@@ -1,0 +1,24 @@
+
+TODO ： 助记符（mnemonics） 用来解释将要做什么。
+
+
+
+1. 流对象
+内置函数open():  open(filename, encoding, model)函数返回一个流对象（stream object），拥有一些用来获取信息和操作字符流的方法和属性。
+
+2. 处理压缩文件：比较流行的gzip and bzip2
+
+    gzip模块允许创建用来读写gzip压缩文件的流对象。该流对象支持read()方法或者write()方法。可以直接读写gzip压缩文件，不需要创建临时文件来保存解压缩了的数据。
+    并支持with。 例  with gzip.open(filename, mode) as name:
+
+    gunzip: 解压缩文件然后保存其内容到一个与原来压缩文件同名的新文件中，去掉其.gz扩展名。
+
+
+3. 标准输入、输出和错误
+
+标准输出和标准错误（stdout、stderr）被集成到每一个类UNIX操作系统中的两个管道（pipe）。
+sys.stdout 和 sys.stderr 都是流对象，只支持写入。试图调用read()引发IOError异常。
+
+    标准输出重定向
+    sys.stdout 和 sys.stderr 都是流对象，是变量， 可进行赋新值（任意其他流对象）来重定向输出。
+
