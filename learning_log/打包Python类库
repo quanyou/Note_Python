@@ -1,0 +1,51 @@
+编写安装脚本：
+
+Distutils 安装脚本是一份Python脚本。他可以做任何Python可以做的事情。安装脚本应该做尽可能少的事情并尽可能按标准的方式做。安装脚本应该简单。
+
+每个Distutiles安装脚本的第一行总是相同的：
+
+from distutiles.core import setup
+
+该行导入setup()函数，是distutiles的主入口点。
+
+命名变量是必需的：
+
+    name， 安装包的名称
+    version， 安装包的版本
+    author， 您的全名
+    author_email， 您的邮件地址
+    url， 项目主页。如果没有一个单独的项目网站，可以是安装包的PyPI的页面地址。
+
+建议命名：
+
+    description， 在线的项目摘要
+    long_description， 以reStructuredText format 格式编写的多行字符串。PyPI将其转换为HTML并在安装包中显示。
+    classifiers， 特别格式化字符串
+
+
+包分类
+
+开发状态： 软件品质适合beta发布么？适合Alpha发布么？还是Pre-alpha？
+
+目标用户： 常见的选项包括：Developers、End Users/Desktop、 Science/Research 和 System Administrators。
+
+框架： 如果你的软件是像Django或Zope这样较大的框架的插件，请包含适当的Framework分类。
+
+主题： 有大量的主题可供选择，选择所有的适用项。
+
+
+通过清单指定附加文件
+Distutiles将下列文件包含在发布包中：
+
+    README.txt
+    setup.py
+    由列在packages参数中的多模块文件所需的.py文件
+    在py_modules参数中列出的单独.py文件
+
+
+将软件添加到Python安装包列表
+
+1. 注册你自己
+2. 注册你的软件
+3. 上传你通过setup.py sdist 和 setup.py bdist_* 创建的包。
+

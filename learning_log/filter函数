@@ -1,0 +1,134 @@
+
+filter() 函数用于过滤序列，过滤掉不符合条件的元素，返回由符合条件元素组成的新列表。
+
+filter() 函数接收一个函数func和一个iterable（可以是list， 字符串等）， 这个函数func的作用是对每个元素进行判断， 返回True 或 False，
+filter()根据判断结果自动过滤掉不符合条件的元素，最后将返回True的元素放在新列表中。
+
+语法
+filter(function, iterable)
+
+参数
+function -- 判断函数。
+iterable -- 可迭代对象。
+
+返回值
+返回符合条件的新列表。
+
+
+实例
+#！/usr/bin/python
+# _*_ coding: UTF-8 _*_
+list = [1,2,4,6,8,9]
+def is_gt_5(num):
+    return num > 5
+
+new_list = filter(is_gt_5, list)
+
+
+高级用法
+
+1. 过滤非数字字符
+
+name = 'pythontab.com 2018'
+filter(str.isdigit, name)
+
+
+2. 过滤数字
+
+filter(str.isalpha, name)
+
+
+3. 保留数字和小数点
+
+filter(lambda char: char in '0123456789.', name)
+
+
+
+
+
+
+
+
+
+
+exec执行函数
+exec函数功能：执行储存在字符串或文件中的Python语句，相比于eval，exec可以执行更复杂的Python代码。
+
+语法
+exec(object[,globals[,locals]])
+
+参数
+object: 必选参数，表示需要被指定的Python代码。它必须是字符串或code对象。如果object是一个字符串，该字符串会先被解析为一组Python语句，然后在执行。如果object是一个code对象，
+那么它只是被简单的执行。
+globals：可选参数，表示全局命名空间（存在全局变量），如果被提供，则必须是一个字典对象。
+locals： 可选参数，表示当前局部命名空间（存放局部变量）， 如果被提供，可以是任何映射对象。如果该参数被忽略，那么他将会取与globals相同的值。
+
+返回值
+exec 返回值永远为None。
+
+实例
+
+exec 'print "Hello Python"'
+
+# 单行语句字符串
+exec 'print "pythontab.com"'
+
+# 多行语句字符串
+exec """for i in range(5):
+print "iter time: %d" %i
+"""
+
+iter time: 0
+iter time: 1
+iter time: 2
+
+
+
+
+
+
+eval 函数
+
+函数定义：
+eval(expression, globals=None, locals=None)
+将字符串str当成有效的表达式来求值并返回计算结果。globals和locals参数是可选的，如果提供了globals参数，那么它必须是dictionary类型；如果提供了
+locals参数，那么它可以是任意的map对象。
+python的全局名字空间存储在一个叫globals()的dict对象中；局部名字空间存储在一个叫locals()的dict对象中。我们可以用print(locals())来查看该函数
+体内的所有变量名和变量值。
+
+
+eval() 主要作用：
+    1）在编译语言里要动态的产生代码，基本上是不能的，但是动态语言是可以的，意味着软件已经部署到服务器上了，但只要做很少的更改，只好直接修改这部分的代码，
+    就可立即实现变化，不用整个软件重新加载。
+    2）在machin learning里根据用户使用这个软件频率，以及方式，可动态的修改代码，适应用户的变化。
+
+
+例：
+a = 1
+g = {'a' : 20}
+eval("a+1", g)
+
+
+例 测试globals，locals
+
+x = 1
+y = 1
+num1 = eval("x+y")
+print(num1)
+
+def g():
+    x = 2
+    y = 2
+    num3 = eval("x+y")
+    print(num3)
+    num2 = eval("x+y", globals())
+    print(num2)
+
+g()
+
+num1的值是2，num3的值是4；由于提供了globals()参数，应当找全局的x和y值，也就是都是为1，那么显而易见，num2值也是2.
+
+
+因为eval特型
+1. 自行写检查函数
+2. 使用ast.literal_eval代替
