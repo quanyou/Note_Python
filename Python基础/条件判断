@@ -1,0 +1,10 @@
+if...elif...else
+
+条件判断语句 if，elif，else可以进行组合使用，使用时elif可以多次使用。
+
+注： Python中的条件判断和OC中的区别，OC中使用if...else...进行判断，if后面需要接带有括号的判断条件然后加冒号，Python中不需要使用小括号。
+
+
+input()
+
+在使用input()时，Python接收的是str，如果需要转换成整数，需要使用函数int().

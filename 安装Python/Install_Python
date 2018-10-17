@@ -1,0 +1,8 @@
+安装Python后会得到Python解释器（负责运行Python程序的），一个命令行交互环境，一个简单地集成开发环境。
+
+安装Python3.7
+目前我使用的是Mac，Mac上自带Python2.7后的版本，在Python 3. 需要自己下载，安装方法：
+
+方法一：从Python官网下载
+方法二：安装了Homebrew，直接通过命令brew install Python3安装。
+
