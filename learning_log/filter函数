@@ -132,3 +132,107 @@ num1的值是2，num3的值是4；由于提供了globals()参数，应当找全�
 因为eval特型
 1. 自行写检查函数
 2. 使用ast.literal_eval代替
+
+
+
+enumerate函数：
+说明 函数原型： enumerate(sequence, [start=0])
+功能：将可循序列sequence以start开始分别列出序列数据和数据下标；即对一个可便利的数据对象（如列表、元组或字符串）， enumerate会将该数据对象组合为一个索引序列，同时列出数据和数据下标。
+
+
+举例：
+存在一个sequence，对其使用enumerate将会得到如下结果:
+start sequence[0]
+start+1 sequence[1]
+start+2 sequence[2]
+
+
+代码实例：
+enumerate参数为遍历的变量，如字符串，列表等；返回值为enumerate类。
+import string
+s = string.ascii_lowercase
+e = enumerate(s)
+print s
+print list(e)
+
+在同时需要index和value值得时候可以使用enumerate。
+该实例中，line是个string包含0和1，要把1都找出来：
+def xread_line(line):
+    return ((idx,int(val)) for idx, val in enumerate(line) if val != '0')
+
+print read)line('0001110101')
+print(list(xread_line('0001110101'))
+
+
+
+int(x, [base])
+功能：函数的作用是将一个数字或base类型的字符串转换成证书
+
+函数原型：
+int(x=0)
+int(x, base=10), base缺省值为10，也就是说不指定base得值时，函数将x按十进制处理。
+
+1. x可以是数字或字符串，但是base被赋值后x只能是字符串；
+2. x作为字符串时必须是base类型，也就是说x变成数字时必须能用base进制表示。
+
+表示：2~36，原因：十个数字加二十六个英文字母表示，相应进制对应相应数字和字母。
+
+
+
+id函数：
+id(object)
+功能：返回的是对象的身份证号，唯一且不变，但在不重合的生命周期里，可能会出现相同的id值。此处所说的对象应该特指复合类型的对象（如类、list），对于字符串、整数等类型，变量的id是随值得变化而改变的。
+
+is 与 == 的区别是，is是内存中的比较，而==是值得比较
+
+
+divmod数字处理函数
+
+divmod(a, b)函数
+返回的是a//b(除法取整)以及a对b的余数，返回结果类型为tuple
+
+参数：
+a,b可以为数字（包括复数）
+
+
+
+dir() 函数
+可以使用内建的dir函数来列出模块定义的标识符。标识符有函数、类和变量。
+当为dir()提供一个模块名的时候，它返回模块定义的名称列表。如果不提供参数，他返回当前模块中定义的名称列表。
+在输入的sys模块上使用dir。它包含一个庞大的属性列表。
+当不给dir函数传递参数而使用它--默认的，它返回当前模块的属性列表。注意，输入的模块同样是列表的一部分。
+为了观察dir的作用，我们定义一个新的变量a并且给它赋一个值，然后检验dir，我们观察到在列表中增加了以上相同的值。我们使用del语句删除当前模块中的变量/属性，这个变化再一次反映在dir的输出中。
+关于del的一点注释：这个语句在运行后被用来删除一个变量/名称。在这个例子中，del a，你将无法再使用变量a--他就好像从来没有存在过一样。
+
+
+
+delattr(object, name)
+中文说明：删除object对象名为name的属性。
+参数object：对象。
+参数name：属性名称字符串。
+
+
+complex([real[,image]])
+创建一个值为real+image * j的复数或着转化一个字符串或数为复数。如果第一个参数为字符串，则不需要指定第二个参数。
+参数real： int，long，float或string；
+参数image：int，long，float
+
+
+compile(source,filename,mode[,flags[,dont_inherit]])
+中文说明：将source编译为代码或者AST对象。代码对象能够通过exec语句来执行或者eval()进行求值。
+参数source：字符串或AST（Abstract Syntax Trees）对象。
+参数filename：代码文件名称，如果不是从文件读取代码则传递一些可辨识的值。
+参数model：指定编译代码的种类。可以指定为exec，eval，single。
+参数flag和dont_inherit：可选参数。
+
+
+cmp(x, y)
+比较两个对象x和y，如果x < y,返回负数；x == y，返回0；x > y，返回正数。
+
+
+classmethod(function)
+中文说明：
+classmethod 是用来制定一个类的方法为类方法，没有此参数指定的类的方法为实例方法，使用方法如下：
+class C:
+    @classmethod
+    def f(cls, arg1, arg2, ...):...
