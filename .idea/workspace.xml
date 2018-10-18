@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="383a7deb-22ba-4603-9352-e34b010ddc9e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Note_Python.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python基础/dict和set" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python基础/list 和 tuple" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python基础/字符串和编码" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python基础/循环" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python基础/数据类型和变量" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python基础/条件判断" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python简介/python简介.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/函数/调用函数" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/安装Python/Install_Python" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learning_log/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +25,7 @@
           <entry key="dict和set" value="1" />
           <entry key="ipynb" value="1" />
           <entry key="list 和 tuple" value="1" />
-          <entry key="py" value="4" />
+          <entry key="py" value="7" />
           <entry key="字符串和编码" value="1" />
           <entry key="循环" value="1" />
           <entry key="数据类型和变量" value="1" />
@@ -48,7 +37,7 @@
         <counts>
           <entry key="IPNB" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="4" />
+          <entry key="Python" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -56,7 +45,7 @@
           <entry key="Install_Python" value="275" />
           <entry key="dict和set" value="1062" />
           <entry key="list 和 tuple" value="510" />
-          <entry key="py" value="144" />
+          <entry key="py" value="221" />
           <entry key="字符串和编码" value="842" />
           <entry key="循环" value="454" />
           <entry key="数据类型和变量" value="488" />
@@ -67,31 +56,13 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="4039" />
-          <entry key="Python" value="144" />
+          <entry key="Python" value="221" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python简介/python简介.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/安装Python/Install_Python">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Python基础/数据类型和变量">
           <provider selected="true" editor-type-id="text-editor">
@@ -146,11 +117,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/函数/调用函数">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Python简介/python简介.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -184,6 +164,7 @@
         <option value="$PROJECT_DIR$/Python基础/循环" />
         <option value="$PROJECT_DIR$/Python基础/dict和set" />
         <option value="$PROJECT_DIR$/函数/调用函数" />
+        <option value="$PROJECT_DIR$/learning_log/learning_logs/models.py" />
       </list>
     </option>
   </component>
@@ -376,6 +357,11 @@
             <path>
               <item name="Note_Python" type="b2602c69:ProjectViewProjectNode" />
               <item name="Note_Python" type="462c0819:PsiDirectoryNode" />
+              <item name="Python简介" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Note_Python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Note_Python" type="462c0819:PsiDirectoryNode" />
               <item name="函数" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -418,7 +404,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
@@ -470,13 +455,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python简介/python简介.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -533,6 +511,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learning_log/learning_log/settings.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learning_log/learning_logs/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python简介/python简介.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
         </state>
       </provider>
     </entry>
